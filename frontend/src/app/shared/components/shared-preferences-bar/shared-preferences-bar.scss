@@ -1,0 +1,11 @@
+.prefs-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+:host-context(.sidebar--collapsed) .prefs-bar {
+  flex-direction: column;
+  justify-content: initial;
+  gap: var(--space-2);
+}

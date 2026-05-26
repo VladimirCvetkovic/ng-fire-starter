@@ -1,0 +1,307 @@
+{
+  "auth": {
+    "login": {
+      "pageTitle": "Sign in",
+      "tagline": "Tagline",
+      "email": "Email",
+      "emailPlaceholder": "user@email.com",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "validation": {
+        "required": "This field is required",
+        "invalidEmail": "Enter a valid email address"
+      },
+      "errors": {
+        "invalidCredential": "Incorrect email or password",
+        "emailNotVerified": "Email not verified. Check your inbox before signing in.",
+        "tooManyRequests": "Too many attempts. Please try again later",
+        "networkError": "Network error. Check your internet connection",
+        "recaptchaFailed": "Verification failed. Please try again",
+        "unknown": "Sign in failed. Please try again"
+      }
+    },
+    "register": {
+      "pageTitle": "Create account",
+      "creating": "Creating account…",
+      "step0": {
+        "title": "Create account",
+        "subtitle": "Who are you?",
+        "userTitle": "User",
+        "userDescription": "User description",
+        "adminTitle": "Administrator",
+        "adminDescription": "Admin description",
+        "continue": "Continue →"
+      },
+      "step1": {
+        "userTitle": "User Account",
+        "adminTitle": "Admin Account",
+        "subtitle": "Fill in basic information",
+        "nameLabel": "Full name",
+        "namePlaceholder": "John Smith",
+        "email": "Email",
+        "emailPlaceholder": "user@email.com",
+        "password": "Password",
+        "passwordPlaceholder": "Min. 6 characters",
+        "confirmPasswordLabel": "Confirm password",
+        "confirmPasswordPlaceholder": "Repeat password",
+        "continueBtn": "Continue →",
+        "createBtn": "Create account →",
+        "phoneLabel": "Phone number",
+        "phonePlaceholder": "+1 555 123 4567"
+      },
+      "step2": {
+        "title": "Step 2 title",
+        "subtitle": "One more step",
+        "logoUrlLabel": "Logo (optional)",
+        "logoUrlPlaceholder": "https://example.com/logo.png",
+        "logoPreviewAlt": "Logo preview",
+        "themeLabel": "Default theme",
+        "paletteLabel": "Color palette",
+        "langLabel": "Language",
+        "brandingNote": "All <strong>Branding</strong> settings can be adjusted later on the Settings page.",
+        "createBtn": "Create admin account →"
+      },
+      "alreadyHaveAccount": "Already have an account?",
+      "logIn": "Log in",
+      "validation": {
+        "required": "This field is required",
+        "invalidEmail": "Enter a valid email address",
+        "minPassword": "Password must be at least 6 characters",
+        "passwordMismatch": "Passwords do not match",
+        "invalidPhone": "Enter a valid phone number (e.g. +381 63 555 0000)",
+        "invalidUrl": "Enter a valid URL starting with http:// or https://"
+      },
+      "errors": {
+        "emailAlreadyInUse": "Email is already registered",
+        "weakPassword": "Password must be at least 6 characters",
+        "tooManyRequests": "Too many attempts. Please try again later",
+        "networkError": "Network error. Check your internet connection",
+        "recaptchaFailed": "Verification failed. Please try again",
+        "unknown": "Registration failed. Please try again"
+      }
+    },
+    "forgotPassword": {
+      "pageTitle": "Forgot password",
+      "title": "Reset password",
+      "instruction": "Enter your email address and we'll send you a link to reset your password.",
+      "email": "Email",
+      "emailPlaceholder": "user@email.com",
+      "send": "Send reset link",
+      "sending": "Sending…",
+      "sentSuccess": "Reset link sent!",
+      "sentDetail": "Check your inbox at {{email}}.",
+      "spamNote": "Don't see the email? Make sure to check your <strong>SPAM</strong> folder.",
+      "backToLogin": "Back to login",
+      "validation": {
+        "required": "Email is required",
+        "invalidEmail": "Enter a valid email address"
+      },
+      "errors": {
+        "userNotFound": "No account found with this email",
+        "invalidEmail": "Enter a valid email address",
+        "tooManyRequests": "Too many attempts. Please try again later",
+        "networkError": "Network error. Check your internet connection",
+        "unknown": "Something went wrong. Please try again"
+      }
+    },
+    "resetPassword": {
+      "pageTitle": "Reset password",
+      "title": "New password",
+      "verifying": "Verifying link…",
+      "instruction": "Set a new password for {{email}}.",
+      "passwordLabel": "New password",
+      "passwordPlaceholder": "Min. 6 characters",
+      "confirmLabel": "Confirm password",
+      "confirmPlaceholder": "Repeat password",
+      "submit": "Save password",
+      "submitting": "Saving…",
+      "successTitle": "Password changed!",
+      "successDetail": "You can now sign in with your new password.",
+      "backToLogin": "Back to login",
+      "invalidCode": {
+        "detail": "The password reset link has expired or has already been used.",
+        "tryAgain": "Request a new link"
+      },
+      "validation": {
+        "required": "This field is required",
+        "minPassword": "Password must be at least 6 characters",
+        "passwordMismatch": "Passwords do not match"
+      },
+      "errors": {
+        "expiredCode": "Link has expired. Request a new one.",
+        "invalidCode": "Invalid link. Request a new one.",
+        "weakPassword": "Password must be at least 6 characters",
+        "tooManyRequests": "Too many attempts. Please try again later",
+        "networkError": "Network error. Check your internet connection",
+        "unknown": "Something went wrong. Please try again"
+      }
+    },
+    "emailVerified": {
+      "pageTitle": "Email verification",
+      "verifying": "Verifying…",
+      "successTitle": "Email verified!",
+      "successDetail": "Your email address has been confirmed. You can now sign in.",
+      "invalidTitle": "Link expired",
+      "invalidDetail": "This link is invalid or has already been used. Please request a new one.",
+      "backToLogin": "Back to login"
+    },
+    "verifyEmail": {
+      "pageTitle": "Verify email",
+      "title": "Check your email",
+      "instruction": "We sent a verification link to:",
+      "resend": "Resend email",
+      "sending": "Sending…",
+      "resentSuccess": "Email resent! Check your inbox.",
+      "spamNote": "Don't see the email? Make sure to check your <strong>SPAM</strong> folder.",
+      "backToLogin": "Back to login",
+      "errors": {
+        "resendFailed": "Could not resend email. Please try again."
+      }
+    },
+    "header": {
+      "back": "Back"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Already have an account?",
+      "logIn": "Log in",
+      "recaptchaNotice": "Protected by Google <a class=\"link\" href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">reCAPTCHA</a> – <a class=\"link\" href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Terms of Service</a>"
+    }
+  },
+  "layout": {
+    "sidenav": {
+      "ariaLabel": "Sidebar navigation",
+      "toggleCollapse": "Toggle sidebar",
+      "searchPlaceholder": "Search...",
+      "logout": "Logout",
+      "play": "Log workout",
+      "admin": {
+        "home": "Overview",
+        "clients": "Clients",
+        "plans": "Plans",
+        "meals": "Meals",
+        "settings": "Settings"
+      },
+      "user": {
+        "home": "Home",
+        "meals": "Meals",
+        "history": "History",
+        "profile": "Profile"
+      },
+      "roleLabel": {
+        "user": "User",
+        "admin": "Administrator"
+      }
+    },
+    "drawer": {
+      "close": "Close"
+    },
+    "bottomSheet": {
+      "close": "Close"
+    }
+  },
+  "placeholder": {
+    "welcome": "Welcome, {{name}}! ({{role}})",
+    "logout": "Logout",
+    "openDrawer": "Open Drawer",
+    "openBottomSheet": "Open Bottom Sheet",
+    "openBanner": "Show Banner",
+    "drawerTitle": "Example Drawer",
+    "drawerSubtitle": "Sample content inside a drawer",
+    "drawerContent": "This is content rendered inside the drawer panel.",
+    "bottomSheetTitle": "Example Bottom Sheet",
+    "bottomSheetSubtitle": "Sample content inside a bottom sheet",
+    "bottomSheetContent": "This is content rendered inside the bottom sheet.",
+    "bannerMessage": "This is a sample banner notification.",
+    "bannerClose": "Dismiss",
+    "demo": {
+      "title": "Component Guide",
+      "overlays": "Overlays",
+      "buttons": "Buttons",
+      "forms": "Forms",
+      "cards": "Cards",
+      "badges": "Badges",
+      "chips": "Chips",
+      "pills": "Pills",
+      "dots": "Dots",
+      "itemList": "Item List",
+      "contextMenu": "Context Menu",
+      "emptyState": "Empty State",
+      "iconBox": "Icon Box",
+      "btn": {
+        "default": "Default",
+        "primary": "Primary",
+        "ghost": "Ghost",
+        "danger": "Danger",
+        "dark": "Dark",
+        "nav": "Nav",
+        "dashed": "Dashed",
+        "dashedPrimary": "Dashed Primary",
+        "outlineDanger": "Outline Danger",
+        "subtle": "Subtle",
+        "back": "Back",
+        "disabled": "Disabled",
+        "edit": "Edit",
+        "delete": "Delete"
+      },
+      "form": {
+        "nameLabel": "Full name",
+        "namePlaceholder": "John Smith",
+        "emailLabel": "Email",
+        "emailPlaceholder": "user@email.com",
+        "roleLabel": "Role",
+        "option1": "User",
+        "option2": "Admin",
+        "agreeLabel": "I agree to the terms",
+        "error": "This field is required"
+      },
+      "card": {
+        "basic": "Basic Card",
+        "shadow": "Shadow Card",
+        "interactive": "Interactive Card",
+        "body": "Card content goes here."
+      },
+      "badge": {
+        "primary": "Primary",
+        "success": "Success",
+        "danger": "Danger",
+        "muted": "Muted"
+      },
+      "list": {
+        "item1": "Item one",
+        "item1Sets": "Subtitle one",
+        "item2": "Item two",
+        "item2Sets": "Subtitle two",
+        "item3": "Item three",
+        "item3Sets": "Subtitle three"
+      },
+      "menu": {
+        "edit": "Edit",
+        "view": "View details",
+        "delete": "Delete"
+      },
+      "empty": {
+        "title": "No items yet",
+        "description": "Add your first item to get started.",
+        "action": "Add item"
+      }
+    }
+  },
+  "ui": {
+    "appName": "#{ProjectName}#",
+    "palette": {
+      "ariaLabel": "Switch color palette",
+      "blue": "Blue",
+      "violet": "Violet",
+      "emerald": "Emerald",
+      "amber": "Amber",
+      "red": "Red",
+      "pink": "Pink",
+      "cyan": "Cyan",
+      "orange": "Orange"
+    }
+  }
+}

@@ -1,0 +1,247 @@
+<div *transloco="let t; read: 'placeholder'" class="overflow-auto h-100">
+
+  <div class="sticky-bar d-flex align-items-center gap-3 px-6 py-3">
+    <p class="fw-bold text-body mb-0">{{ t('demo.title') }}</p>
+    <div class="d-flex align-items-center gap-3 ms-auto">
+      <shared-theme-switcher />
+      <shared-palette-switcher />
+      <button class="btn btn-ghost btn-sm" (click)="auth.logout()">{{ t('logout') }}</button>
+    </div>
+  </div>
+
+  <div class="container py-8">
+
+    <p class="text-muted fs-sm mb-10">
+      {{ t('welcome', { name: auth.currentUser()?.name, role: auth.currentUser()?.role }) }}
+    </p>
+
+    <!-- ── Overlays ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.overlays') }}</p>
+      <div class="d-flex flex-wrap gap-3">
+        <button class="btn btn-primary btn-sm" (click)="openDrawer()">{{ t('openDrawer') }}</button>
+        <button class="btn btn-primary btn-sm" (click)="openBottomSheet()">{{ t('openBottomSheet') }}</button>
+        <button class="btn btn-primary btn-sm" (click)="openBanner()">{{ t('openBanner') }}</button>
+      </div>
+    </section>
+
+    <!-- ── Buttons ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.buttons') }}</p>
+      <div class="d-flex flex-wrap gap-3 mb-3">
+        <button class="btn">{{ t('demo.btn.default') }}</button>
+        <button class="btn btn-primary">{{ t('demo.btn.primary') }}</button>
+        <button class="btn btn-ghost">{{ t('demo.btn.ghost') }}</button>
+        <button class="btn btn-danger">{{ t('demo.btn.danger') }}</button>
+        <button class="btn btn-dark">{{ t('demo.btn.dark') }}</button>
+      </div>
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <button class="btn btn-sm btn-dashed">{{ t('demo.btn.dashed') }}</button>
+        <button class="btn btn-sm btn-dashed-primary">{{ t('demo.btn.dashedPrimary') }}</button>
+        <button class="btn btn-nav btn-sm">{{ t('demo.btn.nav') }}</button>
+        <button class="btn btn-sm btn-outline-danger">{{ t('demo.btn.outlineDanger') }}</button>
+        <button class="btn btn-subtle">{{ t('demo.btn.subtle') }}</button>
+        <button class="back-text-btn">
+          <shared-icon name="chevron-left" [size]="14" />
+          {{ t('demo.btn.back') }}
+        </button>
+        <button class="btn btn-primary btn-sm" disabled>{{ t('demo.btn.disabled') }}</button>
+        <button class="btn-icon" [attr.aria-label]="t('demo.btn.edit')">
+          <shared-icon name="edit" [size]="20" />
+        </button>
+        <button class="btn-icon-danger" [attr.aria-label]="t('demo.btn.delete')">
+          <shared-icon name="trash" [size]="20" />
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Forms ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.forms') }}</p>
+      <div class="d-flex flex-column gap-4 max-w-sm">
+        <div>
+          <label class="form-label mb-1" for="demo-name">{{ t('demo.form.nameLabel') }}</label>
+          <input id="demo-name" class="input" [placeholder]="t('demo.form.namePlaceholder')" />
+        </div>
+        <div class="position-relative">
+          <label class="form-label mb-1" for="demo-email">{{ t('demo.form.emailLabel') }}</label>
+          <input id="demo-email" class="input input-sm" [placeholder]="t('demo.form.emailPlaceholder')" aria-invalid="true" />
+          <span class="field-error fs-xs">{{ t('demo.form.error') }}</span>
+        </div>
+        <div>
+          <label class="form-label mb-1" for="demo-role">{{ t('demo.form.roleLabel') }}</label>
+          <select id="demo-role" class="select select-sm">
+            <option>{{ t('demo.form.option1') }}</option>
+            <option>{{ t('demo.form.option2') }}</option>
+          </select>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <input type="checkbox" class="checkbox" id="demo-agree-1" />
+          <label for="demo-agree-1" class="fs-sm cursor-pointer">{{ t('demo.form.agreeLabel') }}</label>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <input type="checkbox" class="checkbox" id="demo-agree-2" checked />
+          <label for="demo-agree-2" class="fs-sm cursor-pointer">{{ t('demo.form.agreeLabel') }}</label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Cards ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.cards') }}</p>
+      <div class="grid gap-4">
+        <div class="col-12 col-md-4">
+          <div class="card p-4">
+            <p class="fw-semibold fs-sm mb-1">{{ t('demo.card.basic') }}</p>
+            <p class="text-muted fs-sm mb-0">{{ t('demo.card.body') }}</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card card--shadow p-4">
+            <p class="fw-semibold fs-sm mb-1">{{ t('demo.card.shadow') }}</p>
+            <p class="text-muted fs-sm mb-0">{{ t('demo.card.body') }}</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card card--interactive p-4 cursor-pointer">
+            <p class="fw-semibold fs-sm mb-1">{{ t('demo.card.interactive') }}</p>
+            <p class="text-muted fs-sm mb-0">{{ t('demo.card.body') }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Badges ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.badges') }}</p>
+
+      <p class="fs-xs text-muted mb-2">{{ t('demo.chips') }}</p>
+      <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+        <span class="badge badge--chip" data-color="primary">{{ t('demo.badge.primary') }}</span>
+        <span class="badge badge--chip" data-color="success">{{ t('demo.badge.success') }}</span>
+        <span class="badge badge--chip" data-color="danger">{{ t('demo.badge.danger') }}</span>
+        <span class="badge badge--chip" data-color="muted">{{ t('demo.badge.muted') }}</span>
+      </div>
+
+      <p class="fs-xs text-muted mb-2">{{ t('demo.pills') }}</p>
+      <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+        <span class="badge badge--pill" data-color="primary">{{ t('demo.badge.primary') }}</span>
+        <span class="badge badge--pill" data-color="success">{{ t('demo.badge.success') }}</span>
+        <span class="badge badge--pill" data-color="danger">{{ t('demo.badge.danger') }}</span>
+        <span class="badge badge--pill" data-color="muted">{{ t('demo.badge.muted') }}</span>
+      </div>
+
+      <p class="fs-xs text-muted mb-2">{{ t('demo.dots') }}</p>
+      <div class="d-flex flex-wrap align-items-center gap-3">
+        <span class="badge badge--dot" data-color="primary"></span>
+        <span class="badge badge--dot" data-color="success"></span>
+        <span class="badge badge--dot" data-color="danger"></span>
+        <span class="badge badge--dot" data-color="muted"></span>
+      </div>
+    </section>
+
+    <!-- ── Item List ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.itemList') }}</p>
+      <ul class="item-list item-list--lined card rounded-lg max-w-sm">
+        <li class="item-list__row d-flex align-items-center gap-3 px-3 py-3">
+          <button class="drag-handle d-flex align-items-center justify-content-center" [attr.aria-label]="t('demo.list.item1')">
+            <shared-icon name="text-lines" [size]="18" />
+          </button>
+          <div class="icon-box-sm bg-primary-subtle rounded-lg d-flex align-items-center justify-content-center flex-shrink-0">
+            <shared-icon name="bar-chart" [size]="16" class="text-primary" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="fw-semibold fs-sm mb-0">{{ t('demo.list.item1') }}</p>
+            <p class="text-muted fs-xs mb-0">{{ t('demo.list.item1Sets') }}</p>
+          </div>
+          <span class="badge badge--chip" data-color="primary">{{ t('demo.badge.primary') }}</span>
+        </li>
+        <li class="item-list__row d-flex align-items-center gap-3 px-3 py-3">
+          <button class="drag-handle d-flex align-items-center justify-content-center" [attr.aria-label]="t('demo.list.item2')">
+            <shared-icon name="text-lines" [size]="18" />
+          </button>
+          <div class="icon-box-sm bg-primary-subtle rounded-lg d-flex align-items-center justify-content-center flex-shrink-0">
+            <shared-icon name="bar-chart" [size]="16" class="text-primary" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="fw-semibold fs-sm mb-0">{{ t('demo.list.item2') }}</p>
+            <p class="text-muted fs-xs mb-0">{{ t('demo.list.item2Sets') }}</p>
+          </div>
+          <span class="badge badge--chip" data-color="success">{{ t('demo.badge.success') }}</span>
+        </li>
+        <li class="item-list__row d-flex align-items-center gap-3 px-3 py-3">
+          <button class="drag-handle d-flex align-items-center justify-content-center" [attr.aria-label]="t('demo.list.item3')">
+            <shared-icon name="text-lines" [size]="18" />
+          </button>
+          <div class="icon-box-sm bg-primary-subtle rounded-lg d-flex align-items-center justify-content-center flex-shrink-0">
+            <shared-icon name="bar-chart" [size]="16" class="text-primary" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="fw-semibold fs-sm mb-0">{{ t('demo.list.item3') }}</p>
+            <p class="text-muted fs-xs mb-0">{{ t('demo.list.item3Sets') }}</p>
+          </div>
+          <span class="badge badge--chip" data-color="muted">{{ t('demo.badge.muted') }}</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── Context Menu ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.contextMenu') }}</p>
+      <div class="context-menu__panel demo-panel">
+        <button class="context-menu__item">
+          <shared-icon name="edit" [size]="16" />
+          {{ t('demo.menu.edit') }}
+        </button>
+        <button class="context-menu__item">
+          <shared-icon name="eye" [size]="16" />
+          {{ t('demo.menu.view') }}
+        </button>
+        <button class="context-menu__item context-menu__item--danger">
+          <shared-icon name="trash" [size]="16" />
+          {{ t('demo.menu.delete') }}
+        </button>
+      </div>
+    </section>
+
+    <!-- ── Empty State ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.emptyState') }}</p>
+      <div class="empty-state d-flex flex-column align-items-center justify-content-center p-10 gap-3 max-w-sm">
+        <div class="icon-box bg-primary-subtle rounded-xl d-flex align-items-center justify-content-center">
+          <shared-icon name="clipboard" [size]="32" class="text-primary" />
+        </div>
+        <p class="fw-semibold text-body mb-0">{{ t('demo.empty.title') }}</p>
+        <p class="text-muted fs-sm text-center mb-0">{{ t('demo.empty.description') }}</p>
+        <button class="btn btn-primary btn-sm mt-1">{{ t('demo.empty.action') }}</button>
+      </div>
+    </section>
+
+    <!-- ── Icon Box ── -->
+    <section class="mb-10">
+      <p class="mb-4">{{ t('demo.iconBox') }}</p>
+      <div class="d-flex align-items-center gap-4">
+        <div class="icon-box bg-primary rounded-xl d-flex align-items-center justify-content-center">
+          <shared-icon name="home" [size]="28" class="text-bg" />
+        </div>
+        <div class="icon-box-sm bg-primary-subtle rounded-lg d-flex align-items-center justify-content-center">
+          <shared-icon name="home" [size]="18" class="text-primary" />
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<ng-template #drawerTpl>
+  <div *transloco="let t; read: 'placeholder'" class="p-4">
+    <p class="text-body">{{ t('drawerContent') }}</p>
+  </div>
+</ng-template>
+
+<ng-template #bottomSheetTpl>
+  <div *transloco="let t; read: 'placeholder'" class="p-4">
+    <p class="text-body">{{ t('bottomSheetContent') }}</p>
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+$gap-scale: 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12;
+
+.flex-row      { flex-direction: row; }
+.flex-column   { flex-direction: column; }
+.flex-wrap     { flex-wrap: wrap; }
+.flex-nowrap   { flex-wrap: nowrap; }
+
+.justify-content-start   { justify-content: flex-start; }
+.justify-content-center  { justify-content: center; }
+.justify-content-end     { justify-content: flex-end; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-evenly  { justify-content: space-evenly; }
+
+.align-items-start   { align-items: flex-start; }
+.align-items-center  { align-items: center; }
+.align-items-end     { align-items: flex-end; }
+.align-items-stretch { align-items: stretch; }
+
+.flex-1        { flex: 1 1 0%; }
+.flex-grow-1   { flex-grow: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
+
+@each $size in $gap-scale {
+  .gap-#{$size} { gap: var(--space-#{$size}); }
+}

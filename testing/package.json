@@ -1,0 +1,17 @@
+{
+  "name": "ng-fire-starter-e2e",
+  "private": true,
+  "scripts": {
+    "test": "bddgen && playwright test",
+    "test:ui": "bddgen && playwright test --ui",
+    "test:debug": "bddgen && playwright test --debug",
+    "report": "playwright show-report",
+    "bddgen": "bddgen"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^22.0.0",
+    "dotenv": "^16.4.5",
+    "playwright-bdd": "^8.0.0"
+  }
+}

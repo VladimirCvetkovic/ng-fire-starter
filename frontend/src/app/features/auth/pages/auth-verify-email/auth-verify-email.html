@@ -1,0 +1,35 @@
+﻿<div class="min-h-screen d-flex flex-column bg-base mx-auto max-w-md px-6" *transloco="let t; read: 'auth.verifyEmail'">
+  <shared-preferences-bar class="pt-4" />
+
+  <div class="d-flex flex-column align-items-center flex-1 pt-10 pb-6 gap-4 text-center">
+    <div class="verify-icon d-flex align-items-center justify-content-center bg-surface rounded-circle fs-2xl" aria-hidden="true">✉</div>
+
+    <div class="d-flex flex-column gap-2">
+      <h1 class="font-display fw-black text-body fs-xl ls-tight">{{ t('title') }}</h1>
+      <p class="font-body text-muted fs-sm lh-base">{{ t('instruction') }}</p>
+      @if (email) {
+        <p class="font-body fw-bold text-body fs-sm">{{ email }}</p>
+      }
+      <p class="font-body text-muted fs-sm lh-base" [innerHTML]="t('spamNote')"></p>
+    </div>
+
+    <div class="d-flex flex-column gap-3 w-100 mt-2">
+      @if (sent()) {
+        <p class="text-success fs-sm" role="status">{{ t('resentSuccess') }}</p>
+      }
+      @if (errorKey()) {
+        <p class="text-danger fs-sm" role="alert">{{ t(errorKey()!) }}</p>
+        <button class="btn btn-primary"
+          [style.opacity]="sending() ? 0.65 : 1"
+          [disabled]="sending()"
+          (click)="resend()">
+          {{ sending() ? t('sending') : t('resend') }}
+        </button>
+      }
+
+      <button class="btn" (click)="goToLogin()">
+        {{ t('backToLogin') }}
+      </button>
+    </div>
+  </div>
+</div>

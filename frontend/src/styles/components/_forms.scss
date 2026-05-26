@@ -1,0 +1,127 @@
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  -webkit-appearance: none;
+
+  &::placeholder {
+    color: var(--color-text-faint);
+  }
+
+  &:focus {
+    border-color: var(--primary);
+    background: var(--color-bg);
+    box-shadow: 0 0 0 3px var(--primary-subtle);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-danger);
+  }
+}
+
+.input-sm {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+// CSS custom properties cannot be interpolated inside SVG data URIs — use a SCSS variable instead
+// stylelint-disable-next-line value-keyword-case
+$select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+.select {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-8) var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: $select-chevron;
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+
+  &:focus {
+    border-color: var(--primary);
+    background-color: var(--color-bg);
+    box-shadow: 0 0 0 3px var(--primary-subtle);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-danger);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.select-sm {
+  padding: var(--space-2) var(--space-5) var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.checkbox {
+  position: relative;
+  appearance: none;
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 7px;
+  background: var(--color-surface-2);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+
+  &:checked,
+  &--checked {
+    background: var(--primary);
+    border-color: var(--primary);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 8px;
+      border: 2px solid var(--on-primary);
+      border-top: none;
+      border-left: none;
+      transform: translate(-50%, -62%) rotate(45deg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+.field-error {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: var(--color-danger);
+}

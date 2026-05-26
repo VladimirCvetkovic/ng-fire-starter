@@ -1,0 +1,43 @@
+.drag-handle {
+  flex-shrink: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  padding: 0;
+  cursor: grab;
+  touch-action: none;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.item-thumb {
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  object-fit: cover;
+
+  &--sm { width: 2.25rem; height: 2.25rem; }
+  &--md { width: 3.5rem;  height: 3.5rem;  }
+}
+
+.item-list {
+  list-style: none;
+}
+
+// Lined — container is the card, rows divided by hairlines
+.item-list--lined {
+  background: var(--color-surface);
+  overflow: hidden;
+
+  .item-list__row {
+    border-bottom: 1px solid var(--color-surface-2);
+    transition: background 0.12s;
+
+    &:last-child { border-bottom: none; }
+    &--dragging  { opacity: 0.4; cursor: grabbing; }
+    &--drag-over { background: var(--primary-subtle); box-shadow: inset 3px 0 0 var(--primary); }
+  }
+}

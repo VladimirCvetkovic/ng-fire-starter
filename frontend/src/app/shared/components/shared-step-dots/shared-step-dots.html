@@ -1,0 +1,9 @@
+<div class="dots d-flex justify-content-center">
+  @for (i of items(); track i) {
+    <div class="dot rounded-pill"
+      [style.width.px]="i === current() ? 20 : 6"
+      [style.background]="i <= current() ? 'var(--primary)' : 'var(--color-border)'"
+      [style.opacity]="i < current() ? 0.45 : 1">
+    </div>
+  }
+</div>

@@ -1,0 +1,19 @@
+// Text colors
+.text-primary   { color: var(--primary); }
+.text-accent    { color: var(--accent); }
+.text-body      { color: var(--color-text); }
+.text-secondary { color: var(--color-text-muted); }
+.text-muted     { color: var(--color-text-muted); }
+.text-faint     { color: var(--color-text-faint); }
+.text-bg        { color: var(--on-primary); }
+.text-danger    { color: var(--color-danger); }
+
+// Background colors
+.bg-base           { background-color: var(--color-bg); }
+.bg-surface        { background-color: var(--color-surface); }
+.bg-surface2       { background-color: var(--color-surface-2); }
+.bg-primary        { background-color: var(--primary); }
+.bg-accent         { background-color: var(--accent); }
+.bg-primary-subtle { background-color: var(--primary-subtle); }
+.bg-accent-subtle  { background-color: var(--accent-subtle); }
+.bg-transparent    { background-color: transparent; }

@@ -1,0 +1,54 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+// Chip — text label with colored background
+.badge--chip {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+
+  &[data-color="primary"] { background: var(--primary-subtle);   color: var(--primary); }
+  &[data-color="success"] { background: var(--color-success-bg); color: var(--color-success); }
+  &[data-color="danger"]  { background: var(--color-danger-bg);  color: var(--color-danger); }
+  &[data-color="muted"]   { background: var(--color-surface-2);  color: var(--color-text-muted); }
+}
+
+// Pill — same as chip but fully rounded (status badges)
+.badge--pill {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+
+  &[data-color="primary"] { background: var(--primary-subtle);   color: var(--primary); }
+  &[data-color="success"] { background: var(--color-success-bg); color: var(--color-success); }
+  &[data-color="danger"]  { background: var(--color-danger-bg);  color: var(--color-danger); }
+  &[data-color="muted"]   { background: var(--color-surface-2);  color: var(--color-text-muted); }
+}
+
+// Dot — small colored circle indicator
+.badge--dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  &[data-color="primary"] { background: var(--primary); }
+  &[data-color="success"] { background: var(--color-success); }
+  &[data-color="danger"]  { background: var(--color-danger); }
+  &[data-color="muted"]   { background: var(--color-text-faint); }
+}
+
+.badge--dot-sm {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  &[data-color="primary"] { background: var(--primary); }
+  &[data-color="success"] { background: var(--color-success); }
+  &[data-color="danger"]  { background: var(--color-danger); }
+  &[data-color="muted"]   { background: var(--color-text-faint); }
+}

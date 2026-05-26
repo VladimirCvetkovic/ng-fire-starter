@@ -1,0 +1,38 @@
+﻿@use 'styles/base/mixins' as m;
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.card--shadow {
+  box-shadow: var(--shadow-sm);
+}
+
+.card--interactive {
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  @include m.hover {
+    border-color: var(--primary-border);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.card__body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.25s ease;
+
+  @include m.no-motion {
+    transition: none;
+  }
+}
+
+.card--collapsed .card__body {
+  grid-template-rows: 0fr;
+}
+
+.card--collapsed .btn-collapse .icon {
+  transform: rotate(-90deg);
+}

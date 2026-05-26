@@ -1,0 +1,75 @@
+@use 'styles/base/mixins' as m;
+
+:host {
+  display: flex;
+}
+
+.sidebar-nav__play {
+  display: none;
+}
+
+@include m.until('md') {
+  :host {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 82;
+    height: 62px;
+    flex-shrink: 0;
+  }
+
+  shared-preferences-bar,
+  .sidebar-header,
+  .sidebar-search,
+  .sidebar-nav__divider,
+  .sidebar-footer {
+    display: none;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    padding: unset;
+    padding-top: unset;
+    border-radius: unset;
+    gap: unset;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+  }
+
+  .sidebar-nav__item {
+    gap: 4px;
+    flex-direction: column;
+    border-radius: unset;
+  }
+
+  .sidebar-nav__item.active {
+    background: unset;
+  }
+
+  .sidebar-nav__play {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-primary);
+    transition: transform 0.15s, background 0.15s;
+    flex-shrink: 0;
+    color: var(--on-primary);
+
+    @include m.hover {
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}

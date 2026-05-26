@@ -1,0 +1,62 @@
+@use '../base/mixins' as m;
+
+:root {
+  --grid-cols: 4;
+  --grid-gutter: 1rem;
+  --container-px: 1rem;
+}
+
+@include m.from('md') {
+  :root {
+    --grid-cols: 8;
+    --grid-gutter: 1.5rem;
+    --container-px: 1.5rem;
+  }
+}
+
+@include m.from('lg') {
+  :root {
+    --grid-cols: 12;
+    --grid-gutter: 2rem;
+    --container-px: 2rem;
+  }
+}
+
+.container {
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: var(--container-px);
+  width: 100%;
+}
+
+.container--narrow { max-width: 768px; }
+.container--wide   { max-width: 1536px; }
+.container--full   { max-width: 100%; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  gap: var(--grid-gutter);
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} { grid-column: span #{$i}; }
+}
+
+@include m.from('sm') {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} { grid-column: span #{$i}; }
+  }
+}
+
+@include m.from('md') {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} { grid-column: span #{$i}; }
+  }
+}
+
+@include m.from('lg') {
+  @for $i from 1 through 12 {
+    .col-lg-#{$i} { grid-column: span #{$i}; }
+  }
+}

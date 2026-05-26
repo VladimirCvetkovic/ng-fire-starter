@@ -1,0 +1,41 @@
+@use 'styles/themes/tokens' as t;
+
+:host {
+  display: contents;
+}
+
+.palette-switcher {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.palette-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  outline-offset: 2px;
+  transition: transform 0.15s, box-shadow 0.15s;
+
+  &:hover:not(.active) {
+    transform: scale(1.15);
+  }
+
+  &.active {
+    box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px currentColor;
+  }
+
+  &[data-palette-swatch='blue']    { background: #{t.palette('blue',    500)}; color: #{t.palette('blue',    500)}; }
+  &[data-palette-swatch='violet']  { background: #{t.palette('violet',  500)}; color: #{t.palette('violet',  500)}; }
+  &[data-palette-swatch='emerald'] { background: #{t.palette('emerald', 500)}; color: #{t.palette('emerald', 500)}; }
+  &[data-palette-swatch='rose']    { background: #{t.palette('rose',    500)}; color: #{t.palette('rose',    500)}; }
+  &[data-palette-swatch='amber']   { background: #{t.palette('amber',   500)}; color: #{t.palette('amber',   500)}; }
+  &[data-palette-swatch='red']     { background: #{t.palette('red',     500)}; color: #{t.palette('red',     500)}; }
+  &[data-palette-swatch='pink']    { background: #{t.palette('pink',    500)}; color: #{t.palette('pink',    500)}; }
+  &[data-palette-swatch='cyan']    { background: #{t.palette('cyan',    500)}; color: #{t.palette('cyan',    500)}; }
+  &[data-palette-swatch='orange']  { background: #{t.palette('orange',  500)}; color: #{t.palette('orange',  500)}; }
+}

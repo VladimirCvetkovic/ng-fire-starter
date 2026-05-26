@@ -1,0 +1,33 @@
+﻿<div class="min-h-screen d-flex flex-column bg-base mx-auto max-w-md px-6" *transloco="let t; read: 'auth.emailVerified'">
+  <shared-preferences-bar class="pt-4" />
+
+  <div class="d-flex flex-column align-items-center flex-1 pt-10 pb-6 gap-4 text-center">
+
+    @switch (pageState()) {
+
+      @case ('verifying') {
+        <p class="font-body text-muted fs-sm">{{ t('verifying') }}</p>
+      }
+
+      @case ('success') {
+        <div class="icon-box d-flex align-items-center justify-content-center bg-surface rounded-circle fs-2xl" aria-hidden="true">✅</div>
+        <div class="d-flex flex-column gap-2">
+          <h1 class="font-display fw-black text-body fs-xl ls-tight">{{ t('successTitle') }}</h1>
+          <p class="font-body text-muted fs-sm lh-base">{{ t('successDetail') }}</p>
+        </div>
+        <a class="btn btn-primary w-100" routerLink="/auth/login">{{ t('backToLogin') }}</a>
+      }
+
+      @case ('invalid') {
+        <div class="icon-box d-flex align-items-center justify-content-center bg-surface rounded-circle fs-2xl" aria-hidden="true">⚠️</div>
+        <div class="d-flex flex-column gap-2">
+          <h1 class="font-display fw-black text-body fs-xl ls-tight">{{ t('invalidTitle') }}</h1>
+          <p class="font-body text-muted fs-sm lh-base">{{ t('invalidDetail') }}</p>
+        </div>
+        <a class="btn btn-primary w-100" routerLink="/auth/login">{{ t('backToLogin') }}</a>
+      }
+
+    }
+
+  </div>
+</div>

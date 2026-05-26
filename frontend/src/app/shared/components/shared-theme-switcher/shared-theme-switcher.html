@@ -1,0 +1,7 @@
+<button
+  class="theme-switcher"
+  type="button"
+  (click)="toggle()"
+  [attr.aria-label]="isDark() ? 'Switch to light mode' : 'Switch to dark mode'">
+  <shared-icon [name]="isDark() ? 'sun' : 'moon'" [size]="14" />
+</button>

@@ -1,0 +1,6 @@
+<footer class="pt-5 pb-7 font-body text-center mt-auto" *transloco="let t; read: 'auth.footer'">
+  <p class="text-muted fs-xs text-center mt-4" [innerHTML]="t('recaptchaNotice')"></p>
+  @if (!isProduction) {
+    <p class="text-muted fs-xs text-center mt-2">v{{ buildVersion }}</p>
+  }
+</footer>
