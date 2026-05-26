@@ -1,0 +1,49 @@
+@if (bottomSheetSvc.config(); as cfg) {
+  <div *transloco="let t; read: 'layout.bottomSheet'">
+    <div class="bs-backdrop" (click)="bottomSheetSvc.close()" aria-hidden="true"></div>
+    <div
+      class="bs-panel d-flex flex-column"
+      [class.bs-modal]="isWide()"
+      role="dialog"
+      aria-modal="true"
+      [attr.aria-label]="cfg.title"
+      tabindex="-1"
+      #panel>
+      @if (!isWide()) {
+        <div
+          class="bs-handle-area d-flex align-items-center justify-content-center flex-shrink-0"
+          aria-hidden="true"
+          (touchstart)="onDragStart($event)"
+          (touchmove)="onDragMove($event)"
+          (touchend)="onDragEnd()">
+          <div class="bs-handle"></div>
+        </div>
+      }
+      <div class="bs-header d-flex align-items-center gap-3 border-bottom flex-shrink-0">
+        <div class="flex-1 min-w-0">
+          <p class="bs-title font-display fw-bold text-body text-truncate">{{ cfg.title }}</p>
+          @if (cfg.subtitle) {
+            <p class="fs-xs font-body text-faint m-0">{{ cfg.subtitle }}</p>
+          }
+        </div>
+        @if (isWide()) {
+          <button
+            class="bs-close-btn d-flex align-items-center justify-content-center flex-shrink-0 rounded text-muted cursor-pointer"
+            (click)="bottomSheetSvc.close()"
+            [attr.aria-label]="t('close')">
+            <shared-icon name="close" [size]="20" />
+          </button>
+        }
+      </div>
+      <div class="flex-1 overflow-auto">
+        @if (cfg.component) {
+          <ng-container
+            [ngComponentOutlet]="cfg.component"
+            [ngComponentOutletInputs]="cfg.inputs ?? {}" />
+        } @else if (cfg.template) {
+          <ng-container [ngTemplateOutlet]="cfg.template" />
+        }
+      </div>
+    </div>
+  </div>
+}

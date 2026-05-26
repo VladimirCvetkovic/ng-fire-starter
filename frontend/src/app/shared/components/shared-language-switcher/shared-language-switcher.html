@@ -1,0 +1,7 @@
+<button
+  class="lang-switcher font-body fs-xs fw-bold text-muted"
+  type="button"
+  (click)="toggle()"
+  [attr.aria-label]="activeLang() === 'sr' ? 'Switch to English' : 'Prebaci na srpski'">
+  {{ activeLang() === 'sr' ? 'EN' : 'SR' }}
+</button>

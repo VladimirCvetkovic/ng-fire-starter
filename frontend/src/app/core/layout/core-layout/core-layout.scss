@@ -1,0 +1,13 @@
+@use 'styles/mixins' as m;
+
+.shell {
+  height: 100dvh;
+
+  @include m.from('md') {
+    flex-direction: row;
+  }
+
+  @include m.until('md') {
+    padding-bottom: 62px;
+  }
+}

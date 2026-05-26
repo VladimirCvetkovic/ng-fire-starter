@@ -1,0 +1,241 @@
+// ─── Sidebar Navigation ───────────────────────────────────────────────────────
+//
+// Usage:
+//   <aside class="sidebar">
+//     <div class="sidebar-header"> ... </div>
+//     <div class="sidebar-search"> ... </div>
+//     <nav class="sidebar-nav"> ... </nav>
+//     <footer class="sidebar-footer"> ... </footer>
+//   </aside>
+//
+// Collapsed (icon-only):  add  .sidebar--collapsed  on .sidebar
+
+// ─── Variables ───────────────────────────────────────────────────────────────
+
+$nav-accent:        var(--primary);
+$nav-accent-subtle: var(--primary-subtle);
+$nav-width:          240px;
+$nav-width-collapsed: 72px;
+$nav-radius:         0;
+$nav-item-radius:    10px;
+$nav-transition:     0.2s ease;
+
+// Height of the mobile bottom nav bar — keeps bottom sheet above it
+$mobile-nav-h: 62px;
+
+:root { --mobile-nav-h: 0px; }
+
+@media (max-width: 767px) {
+  :root { --mobile-nav-h: #{$mobile-nav-h}; }
+}
+
+// ─── Sidebar wrapper ─────────────────────────────────────────────────────────
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: $nav-width;
+  min-height: 100%;
+  background: var(--color-surface);
+  border-radius: $nav-radius;
+  box-shadow: var(--shadow-md);
+  padding: 12px;
+  padding-top: 20px;
+  gap: 4px;
+  position: relative;
+  transition: width $nav-transition;
+  flex-shrink: 0;
+}
+
+.sidebar--collapsed {
+  width: $nav-width-collapsed;
+
+  .sidebar-brand__info,
+  .sidebar-search,
+  .sidebar-nav__label { display: none; }
+
+  .sidebar-brand { justify-content: center; }
+
+  .sidebar-nav__item { justify-content: center; padding: 12px; }
+}
+
+// ─── Header / Brand ──────────────────────────────────────────────────────────
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 0 4px 8px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-brand__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: $nav-accent;
+  color: var(--on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.sidebar-brand__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.sidebar-brand__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.sidebar-brand__role {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.sidebar-brand__toggle {
+  position: absolute;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $nav-accent;
+  color: var(--on-primary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background $nav-transition;
+  box-shadow: var(--shadow-primary);
+  z-index: 1;
+
+  &:hover { background: var(--primary-hover); }
+}
+
+// ─── Search ──────────────────────────────────────────────────────────────────
+
+.sidebar-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 9px 12px;
+  margin: 8px 0;
+  flex-shrink: 0;
+}
+
+.sidebar-search__icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-faint);
+  flex-shrink: 0;
+}
+
+.sidebar-search__input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  color: var(--color-text);
+  font-family: var(--font-body);
+
+  &::placeholder { color: var(--color-text-faint); }
+}
+
+// ─── Nav list ────────────────────────────────────────────────────────────────
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.sidebar-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: $nav-item-radius;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  width: 100%;
+  transition: background $nav-transition, color $nav-transition;
+  white-space: nowrap;
+
+  &:hover:not(.sidebar-nav__item--active) {
+    background: var(--color-bg);
+    color: var(--primary);
+  }
+
+  &.sidebar-nav__item--active,
+  &[aria-current='page'],
+  &.active {
+    background: $nav-accent-subtle;
+    color: var(--primary);
+
+    .sidebar-nav__icon { color: var(--primary); }
+  }
+
+  &:hover:not(.sidebar-nav__item--active) {
+    .sidebar-nav__icon { color: var(--primary); }
+  }
+}
+
+.sidebar-nav__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--color-text-faint);
+  transition: color $nav-transition;
+}
+
+.sidebar-nav__label {
+  flex: 1;
+  line-height: 1;
+}
+
+.sidebar-nav__divider {
+  height: 1px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+// ─── Footer ──────────────────────────────────────────────────────────────────
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+}

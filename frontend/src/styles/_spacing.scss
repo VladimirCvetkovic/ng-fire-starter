@@ -1,0 +1,62 @@
+@use 'sass:math';
+@use './mixins' as m;
+
+$space-scale: 0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 16, 20, 24;
+
+:root {
+  @each $key in $space-scale {
+    --space-#{$key}: #{math.div($key, 4)}rem;
+  }
+
+  --space-fluid-sm: clamp(0.5rem, 2vw, 1rem);
+  --space-fluid-md: clamp(1rem, 4vw, 2rem);
+  --space-fluid-lg: clamp(1.5rem, 6vw, 4rem);
+  --space-fluid-xl: clamp(2rem, 8vw, 6rem);
+}
+
+@function space($key) {
+  @return var(--space-#{$key});
+}
+
+// ─── Margin utilities ─────────────────────────────────────────────────────────
+
+@each $size in $space-scale {
+  .m-#{$size}  { margin: var(--space-#{$size}); }
+  .mt-#{$size} { margin-top: var(--space-#{$size}); }
+  .mb-#{$size} { margin-bottom: var(--space-#{$size}); }
+  .ms-#{$size} { margin-left: var(--space-#{$size}); }
+  .me-#{$size} { margin-right: var(--space-#{$size}); }
+  .mx-#{$size} { margin-left: var(--space-#{$size}); margin-right: var(--space-#{$size}); }
+  .my-#{$size} { margin-top: var(--space-#{$size}); margin-bottom: var(--space-#{$size}); }
+}
+
+.mx-auto { margin-left: auto; margin-right: auto; }
+.ms-auto { margin-left: auto; }
+.me-auto { margin-right: auto; }
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+
+// ─── Padding utilities ────────────────────────────────────────────────────────
+
+@each $size in $space-scale {
+  .p-#{$size}  { padding: var(--space-#{$size}); }
+  .pt-#{$size} { padding-top: var(--space-#{$size}); }
+  .pb-#{$size} { padding-bottom: var(--space-#{$size}); }
+  .ps-#{$size} { padding-left: var(--space-#{$size}); }
+  .pe-#{$size} { padding-right: var(--space-#{$size}); }
+  .px-#{$size} { padding-left: var(--space-#{$size}); padding-right: var(--space-#{$size}); }
+  .py-#{$size} { padding-top: var(--space-#{$size}); padding-bottom: var(--space-#{$size}); }
+}
+
+// ─── Responsive padding ───────────────────────────────────────────────────────
+
+@include m.from('md') {
+  @each $size in $space-scale {
+    .px-md-#{$size} { padding-left: var(--space-#{$size}); padding-right: var(--space-#{$size}); }
+    .py-md-#{$size} { padding-top: var(--space-#{$size}); padding-bottom: var(--space-#{$size}); }
+    .pt-md-#{$size} { padding-top: var(--space-#{$size}); }
+    .pb-md-#{$size} { padding-bottom: var(--space-#{$size}); }
+    .mt-md-#{$size} { margin-top: var(--space-#{$size}); }
+    .mb-md-#{$size} { margin-bottom: var(--space-#{$size}); }
+  }
+}

@@ -1,0 +1,43 @@
+﻿<div class="min-h-screen d-flex flex-column bg-base mx-auto max-w-md px-6" *transloco="let t; read: 'auth.login'">
+  <shared-preferences-bar class="pt-4" />
+
+  <!-- Logo -->
+  <div class="d-flex flex-column align-items-center pt-8 pb-6 gap-2">
+    <div class="icon-box d-flex align-items-center justify-content-center font-display fw-black bg-primary rounded-xl text-bg ls-tighter fs-2xl" aria-hidden="true">{{ 'ui.appName' | transloco | labelInitials }}</div>
+    <h1 class="font-display fw-black text-body ls-tight fs-2xl">{{ 'ui.appName' | transloco }}</h1>
+    <p class="font-body text-muted fs-sm">{{ t('tagline') }}</p>
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="form" class="d-flex flex-column gap-3 flex-1" (ngSubmit)="doLogin()">
+    <div class="d-flex flex-column gap-1">
+      <label class="form-label" for="email">{{ t('email') }}</label>
+      <input id="email" [placeholder]="t('emailPlaceholder')" class="input" type="email" autocomplete="email" formControlName="email" />
+    </div>
+    <div class="d-flex flex-column gap-1">
+      <label class="form-label" for="password">{{ t('password') }}</label>
+      <input id="password" class="input" type="password" autocomplete="current-password" placeholder="••••••••"
+        formControlName="password" />
+    </div>
+    <div class="text-end">
+      <a class="link" routerLink="/auth/forgot-password">{{ t('forgotPassword') }}</a>
+    </div>
+
+    @if (errorKey()) {
+      <p class="text-danger fs-sm" role="alert">{{ t(errorKey()!) }}</p>
+    }
+
+    <button type="submit" class="btn btn-primary"
+      [style.opacity]="loading() ? 0.65 : 1"
+      [disabled]="loading()">
+      {{ loading() ? t('signingIn') : t('signIn') }}
+    </button>
+    <div class="pt-5 font-body text-center">
+      <span class="font-body text-muted fs-sm">{{ t('noAccount') }} </span>
+      <a class="link" routerLink="/auth/register">{{ t('signUp') }}</a>
+    </div>
+  </form>
+
+  <!-- Footer -->
+   <auth-footer />
+</div>

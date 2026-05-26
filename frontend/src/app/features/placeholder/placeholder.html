@@ -1,0 +1,31 @@
+<div *transloco="let t; read: 'placeholder'" class="h-100 d-flex flex-column align-items-center justify-content-center gap-5 p-6">
+  <div class="d-flex align-items-center gap-2">
+    <div class="icon-box d-flex align-items-center justify-content-center font-display fw-black bg-primary rounded-xl text-bg ls-tighter fs-2xl">{{ 'ui.appName' | transloco | labelInitials }}</div>
+    <h1 class="fs-2xl fw-bold text-primary">{{ 'ui.appName' | transloco }}</h1>
+  </div>
+  <p class="text-body">{{ t('welcome', { name: auth.currentUser()?.name, role: auth.currentUser()?.role }) }}</p>
+
+  <div class="d-flex align-items-center gap-4">
+    <shared-theme-switcher />
+    <shared-palette-switcher />
+  </div>
+
+  <div class="d-flex flex-wrap align-items-center justify-content-center gap-3">
+    <button class="btn btn-primary" (click)="openDrawer()">{{ t('openDrawer') }}</button>
+    <button class="btn btn-primary" (click)="openBottomSheet()">{{ t('openBottomSheet') }}</button>
+    <button class="btn btn-primary" (click)="openBanner()">{{ t('openBanner') }}</button>
+    <button class="btn btn-ghost" (click)="auth.logout()">{{ t('logout') }}</button>
+  </div>
+</div>
+
+<ng-template #drawerTpl>
+  <div *transloco="let t; read: 'placeholder'" class="p-4">
+    <p class="text-body">{{ t('drawerContent') }}</p>
+  </div>
+</ng-template>
+
+<ng-template #bottomSheetTpl>
+  <div *transloco="let t; read: 'placeholder'" class="p-4">
+    <p class="text-body">{{ t('bottomSheetContent') }}</p>
+  </div>
+</ng-template>

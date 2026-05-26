@@ -1,0 +1,120 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build-production:
+    name: Build Angular app (production)
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Bump minor version (local only)
+        working-directory: frontend
+        run: npm version minor --no-git-tag-version
+
+      - name: Build Angular app
+        working-directory: frontend
+        run: npm run build -- --configuration production
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: build-output-production
+          path: frontend/dist/frontend/browser
+          retention-days: 1
+
+      - name: Upload bumped version files
+        uses: actions/upload-artifact@v6
+        with:
+          name: version-bump-files
+          path: |
+            frontend/package.json
+            frontend/package-lock.json
+          retention-days: 1
+
+  deploy-production:
+    name: "Deploy - Production (#{ProjectName}#)"
+    runs-on: ubuntu-latest
+    needs: build-production
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: build-output-production
+          path: frontend/dist/frontend/browser
+
+      - name: Deploy Firestore rules to production
+        env:
+          FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}
+        run: |
+          npm install -g firebase-tools
+          echo "$FIREBASE_SA" > /tmp/sa.json
+          GOOGLE_APPLICATION_CREDENTIALS=/tmp/sa.json firebase deploy --only firestore:rules --project ${{ vars.FIREBASE_PROJECT_ID }}
+          rm -f /tmp/sa.json
+
+      - name: "Deploy to #{ProjectName}# (target: production)"
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_PROD }}
+          projectId: ${{ vars.FIREBASE_PROJECT_ID }}
+          target: production
+          channelId: live
+
+  bump-version:
+    name: Commit version bump
+    runs-on: ubuntu-latest
+    needs: deploy-production
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Download bumped version files
+        uses: actions/download-artifact@v7
+        with:
+          name: version-bump-files
+          path: frontend/
+
+      - name: Commit and push version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add frontend/package.json frontend/package-lock.json
+          git commit -m "chore: bump minor version [skip ci]"
+          git push

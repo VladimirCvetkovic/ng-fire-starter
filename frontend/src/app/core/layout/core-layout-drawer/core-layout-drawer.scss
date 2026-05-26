@@ -1,0 +1,64 @@
+@use 'styles/mixins' as m;
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 70;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+
+  @include m.from('md') {
+    width: 450px;
+  }
+
+  background: var(--color-bg);
+  z-index: 71;
+  animation: slideInRight 0.22s cubic-bezier(0.34, 1.1, 0.64, 1);
+  overflow: hidden;
+  outline: none;
+}
+
+.drawer-header {
+  padding: 20px 16px 16px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.15s;
+
+  @include m.hover {
+    background: var(--color-surface-2);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+.drawer-title {
+  font-size: 16px;
+  margin: 0 0 2px;
+}
+
+.drawer-subtitle {
+  font-size: 12px;
+  margin: 0;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}

@@ -1,0 +1,185 @@
+﻿<div class="min-h-screen d-flex flex-column bg-base px-5 px-md-6 mx-auto max-w-md" *transloco="let t">
+  <shared-preferences-bar class="pt-4" />
+
+  @if (step() === 0) {
+    <div class="flex-1 d-flex flex-column pt-7">
+      <auth-page-header
+        [title]="t('auth.register.step0.title')"
+        [subtitle]="t('auth.register.step0.subtitle')"
+        (backClick)="back()" />
+
+      <shared-step-dots [current]="0" [total]="totalSteps()" />
+
+      <div class="d-flex flex-1 flex-column gap-3 mb-6">
+        <button class="role-card rounded-lg p-4 bg-surface cursor-pointer text-start w-100"
+          [class.active]="selectedRole() === 'user'"
+          [attr.aria-pressed]="selectedRole() === 'user'"
+          (click)="selectRole('user')">
+          <div class="role-card-header d-flex justify-content-between align-items-start">
+            <shared-icon name="user-role" [size]="28" />
+            @if (selectedRole() === 'user') {
+              <div class="check-badge d-flex align-items-center justify-content-center rounded-circle fw-bold bg-primary text-bg fs-xs" aria-hidden="true">✓</div>
+            }
+          </div>
+          <p class="font-display fw-bold text-body mt-2 mb-1 fs-md">{{ t('auth.register.step0.userTitle') }}</p>
+          <p class="font-body text-muted fs-sm lh-base">{{ t('auth.register.step0.userDescription') }}</p>
+        </button>
+
+        <button class="role-card rounded-lg p-4 bg-surface cursor-pointer text-start w-100"
+          [class.active]="selectedRole() === 'admin'"
+          [attr.aria-pressed]="selectedRole() === 'admin'"
+          (click)="selectRole('admin')">
+          <div class="role-card-header d-flex justify-content-between align-items-start">
+            <shared-icon name="clipboard" [size]="28" />
+            @if (selectedRole() === 'admin') {
+              <div class="check-badge d-flex align-items-center justify-content-center rounded-circle fw-bold bg-primary text-bg fs-xs" aria-hidden="true">✓</div>
+            }
+          </div>
+          <p class="font-display fw-bold text-body mt-2 mb-1 fs-md">{{ t('auth.register.step0.adminTitle') }}</p>
+          <p class="font-body text-muted fs-sm lh-base">{{ t('auth.register.step0.adminDescription') }}</p>
+        </button>
+
+        <button class="btn btn-primary"
+          [style.opacity]="selectedRole() ? 1 : 0.35"
+          [style.cursor]="selectedRole() ? 'pointer' : 'not-allowed'"
+          [disabled]="!selectedRole()"
+          (click)="next()">
+          {{ t('auth.register.step0.continue') }}
+        </button>
+  
+        <div class="pt-5 font-body text-center" *transloco="let t; read: 'auth.register'">
+          <span class="font-body text-muted fs-sm">{{ t('alreadyHaveAccount') }} </span>
+          <a class="link" routerLink="/auth/login">{{ t('logIn') }}</a>
+        </div>
+      </div>
+    </div>
+
+  } @else if (step() === 1) {
+    <div class="flex-1 d-flex flex-column pt-7">
+      <auth-page-header
+        [title]="selectedRole() === 'admin' ? t('auth.register.step1.adminTitle') : t('auth.register.step1.userTitle')"
+        [subtitle]="t('auth.register.step1.subtitle')"
+        (backClick)="back()" />
+
+      <shared-step-dots [current]="1" [total]="totalSteps()" />
+
+      <form [formGroup]="basicInfoForm" class="d-flex flex-1 flex-column gap-3" (ngSubmit)="submitBasicInfo()">
+        <div class="d-flex flex-column gap-1">
+          <label class="form-label" for="name">{{ t('auth.register.step1.nameLabel') }}</label>
+          <input id="name" class="input" type="text" [placeholder]="t('auth.register.step1.namePlaceholder')" autocomplete="name" formControlName="name" />
+          @if (basicInfoForm.controls.name.touched && basicInfoForm.controls.name.hasError('required')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.required') }}</span>
+          }
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="form-label" for="reg-email">{{ t('auth.register.step1.email') }}</label>
+          <input id="reg-email" class="input" type="email" [placeholder]="t('auth.register.step1.emailPlaceholder')" autocomplete="email" formControlName="email" />
+          @if (basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('required')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.required') }}</span>
+          } @else if (basicInfoForm.controls.email.touched && basicInfoForm.controls.email.hasError('email')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.invalidEmail') }}</span>
+          }
+        </div>
+        @if (selectedRole() === 'admin') {
+          <div class="d-flex flex-column gap-1">
+            <label class="form-label" for="phone">{{ t('auth.register.step1.phoneLabel') }}</label>
+            <input id="phone" class="input" type="tel" [placeholder]="t('auth.register.step1.phonePlaceholder')" autocomplete="tel" [formControl]="adminForm.controls.phone" />
+            @if (adminForm.controls.phone.touched && adminForm.controls.phone.hasError('required')) {
+              <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.required') }}</span>
+            } @else if (adminForm.controls.phone.touched && adminForm.controls.phone.hasError('pattern')) {
+              <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.invalidPhone') }}</span>
+            }
+          </div>
+        }
+        <div class="d-flex flex-column gap-1">
+          <label class="form-label" for="reg-pwd">{{ t('auth.register.step1.password') }}</label>
+          <input id="reg-pwd" class="input" type="password" [placeholder]="t('auth.register.step1.passwordPlaceholder')" autocomplete="new-password" formControlName="password" />
+          @if (basicInfoForm.controls.password.touched && basicInfoForm.controls.password.hasError('required')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.required') }}</span>
+          } @else if (basicInfoForm.controls.password.touched && basicInfoForm.controls.password.hasError('minlength')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.minPassword') }}</span>
+          }
+        </div>
+        <div class="d-flex flex-column gap-1">
+          <label class="form-label" for="reg-confirm-pwd">{{ t('auth.register.step1.confirmPasswordLabel') }}</label>
+          <input id="reg-confirm-pwd" class="input" type="password" [placeholder]="t('auth.register.step1.confirmPasswordPlaceholder')" autocomplete="new-password" formControlName="confirmPassword" />
+          @if (basicInfoForm.controls.confirmPassword.touched && basicInfoForm.controls.confirmPassword.hasError('required')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.required') }}</span>
+          } @else if (basicInfoForm.controls.confirmPassword.touched && basicInfoForm.hasError('passwordMismatch')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.passwordMismatch') }}</span>
+          }
+        </div>
+
+        @if (errorKey()) {
+          <p class="text-danger fs-sm" role="alert">{{ t('auth.register.' + errorKey()!) }}</p>
+        }
+
+        <button type="submit" class="btn btn-primary"
+          [style.opacity]="loading() ? 0.65 : 1"
+          [disabled]="loading()">
+          @if (loading()) {
+            {{ t('auth.register.creating') }}
+          } @else {
+            {{ selectedRole() === 'admin' ? t('auth.register.step1.continueBtn') : t('auth.register.step1.createBtn') }}
+          }
+        </button>
+      </form>
+    </div>
+
+  } @else {
+    <div class="flex-1 d-flex flex-column pt-7">
+      <auth-page-header
+        [title]="t('auth.register.step2.title')"
+        [subtitle]="t('auth.register.step2.subtitle')"
+        (backClick)="back()" />
+
+      <shared-step-dots [current]="2" [total]="3" />
+
+      <form [formGroup]="adminForm" class="d-flex flex-1 flex-column gap-3" (ngSubmit)="submitAdminInfo()">
+        <div class="d-flex flex-column gap-1">
+          <label class="form-label" for="logo-url">{{ t('auth.register.step2.logoUrlLabel') }}</label>
+          <input id="logo-url" class="input" type="url" [placeholder]="t('auth.register.step2.logoUrlPlaceholder')" formControlName="logoUrl" />
+          @if (adminForm.controls.logoUrl.touched && adminForm.controls.logoUrl.hasError('pattern')) {
+            <span class="text-danger fs-xs" role="alert">{{ t('auth.register.validation.invalidUrl') }}</span>
+          }
+          @if (adminForm.controls.logoUrl.value && !adminForm.controls.logoUrl.hasError('pattern')) {
+            <div class="logo-preview d-flex align-items-center justify-content-center rounded-md bg-surface border">
+              <img [src]="adminForm.controls.logoUrl.value" [alt]="t('auth.register.step2.logoPreviewAlt')" class="logo-preview-img" />
+            </div>
+          }
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+          <p class="form-label mb-0">{{ t('auth.register.step2.themeLabel') }}</p>
+          <shared-theme-switcher />
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+          <p class="form-label mb-0">{{ t('auth.register.step2.paletteLabel') }}</p>
+          <shared-palette-switcher />
+        </div>
+
+        <div class="d-flex flex-column gap-1">
+          <p class="form-label mb-0">{{ t('auth.register.step2.langLabel') }}</p>
+          <shared-language-switcher />
+        </div>
+
+        <div class="d-flex align-items-start bg-surface border rounded-md gap-3 py-3 px-4">
+          <span class="info-icon text-primary flex-shrink-0 lh-base fs-md" aria-hidden="true">✦</span>
+          <p class="info-text font-body text-muted fs-sm lh-base" [innerHTML]="t('auth.register.step2.brandingNote')"></p>
+        </div>
+
+        @if (errorKey()) {
+          <p class="text-danger fs-sm" role="alert">{{ t('auth.register.' + errorKey()!) }}</p>
+        }
+
+        <button type="submit" class="btn btn-primary"
+          [style.opacity]="loading() || adminForm.invalid ? 0.65 : 1"
+          [disabled]="loading() || adminForm.invalid">
+          {{ loading() ? t('auth.register.creating') : t('auth.register.step2.createBtn') }}
+        </button>
+      </form>
+    </div>
+  }
+  <auth-footer />
+</div>

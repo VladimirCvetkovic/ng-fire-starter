@@ -1,0 +1,8 @@
+.page-header {
+  margin-bottom: var(--space-2);
+}
+
+// Aligns with back-button width (20px icon + 4px padding) + gap-3 (12px)
+.sub-text {
+  margin: var(--space-1) 0 var(--space-5) calc(var(--space-6) + var(--space-3));
+}

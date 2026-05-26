@@ -1,0 +1,33 @@
+.role-card {
+  border: 2px solid var(--color-border);
+  transition: border-color 0.2s, background 0.2s;
+
+  .role-card-header { color: var(--color-text-muted); }
+
+  &.active {
+    border-color: var(--primary);
+    background: var(--primary-subtle);
+
+    .role-card-header { color: var(--primary); }
+  }
+}
+
+.check-badge {
+  width: 20px;
+  height: 20px;
+}
+
+.info-text {
+  strong { color: var(--color-text); }
+}
+
+.logo-preview {
+  height: 88px;
+  overflow: hidden;
+}
+
+.logo-preview-img {
+  max-height: 64px;
+  max-width: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,33 @@
+@use './mixins' as m;
+
+.d-none         { display: none; }
+.d-block        { display: block; }
+.d-inline       { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-flex         { display: flex; }
+.d-inline-flex  { display: inline-flex; }
+.d-grid         { display: grid; }
+
+@include m.from('sm') {
+  .d-sm-none        { display: none; }
+  .d-sm-block       { display: block; }
+  .d-sm-flex        { display: flex; }
+  .d-sm-inline-flex { display: inline-flex; }
+  .d-sm-grid        { display: grid; }
+}
+
+@include m.from('md') {
+  .d-md-none        { display: none; }
+  .d-md-block       { display: block; }
+  .d-md-flex        { display: flex; }
+  .d-md-inline-flex { display: inline-flex; }
+  .d-md-grid        { display: grid; }
+}
+
+@include m.from('lg') {
+  .d-lg-none        { display: none; }
+  .d-lg-block       { display: block; }
+  .d-lg-flex        { display: flex; }
+  .d-lg-inline-flex { display: inline-flex; }
+  .d-lg-grid        { display: grid; }
+}

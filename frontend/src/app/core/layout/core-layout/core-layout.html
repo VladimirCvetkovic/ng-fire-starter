@@ -1,0 +1,14 @@
+<div class="shell d-flex flex-column bg-base overflow-hidden">
+  <core-layout-sidenav
+    [role]="role()"
+    [userData]="authSvc.currentUser()"
+    (logWorkout)="goToLog()" />
+  <div class="flex-1 d-flex flex-column overflow-hidden">
+    <main class="flex-1 overflow-auto" id="main-content" style="overflow-x:hidden">
+      <router-outlet />
+    </main>
+    <core-layout-banner />
+  </div>
+</div>
+<core-layout-drawer />
+<core-layout-bottom-sheet />

@@ -1,0 +1,76 @@
+<aside *transloco="let t; read: 'layout.sidenav'"
+       class="sidebar"
+       [class.sidebar--collapsed]="collapsed()"
+       [attr.aria-label]="t('ariaLabel')">
+
+  <div class="sidebar-header">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand__avatar" aria-hidden="true">
+        {{ userData()?.name | labelInitials }}
+      </div>
+      <div class="sidebar-brand__info">
+        <span class="sidebar-brand__name">{{ userData()?.name || t('appName') }}</span>
+        <span class="sidebar-brand__role">{{ t('roleLabel.' + role()) }}</span>
+      </div>
+      <button class="sidebar-brand__toggle"
+              (click)="toggleCollapse()"
+              [attr.aria-label]="t('toggleCollapse')"
+              [attr.aria-expanded]="!collapsed()">
+        <shared-icon [name]="collapsed() ? 'chevron-right' : 'chevron-left'" />
+      </button>
+    </div>
+  </div>
+
+  <div class="sidebar-search" [class.d-none]="collapsed()">
+    <shared-icon name="search" [size]="16" class="sidebar-search__icon" />
+    <input class="sidebar-search__input"
+           type="search"
+           [placeholder]="t('searchPlaceholder')"
+           [attr.aria-label]="t('searchPlaceholder')" />
+  </div>
+
+  <nav class="sidebar-nav" [attr.aria-label]="t('ariaLabel')">
+    @if (role() === 'admin') {
+      @for (item of adminItems; track item.key) {
+        <a class="sidebar-nav__item"
+           [routerLink]="item.path"
+           routerLinkActive="active"
+           [attr.aria-label]="t('admin.' + item.key)">
+          <shared-icon [name]="item.icon" [size]="20" class="sidebar-nav__icon" />
+          <span class="sidebar-nav__label">{{ t('admin.' + item.key) }}</span>
+        </a>
+      }
+    } @else {
+      @for (item of userItems; track item.key) {
+        @if (item.key === 'play') {
+          <button class="sidebar-nav__play"
+                  (click)="playClick.emit()"
+                  [attr.aria-label]="t('play')">
+            <shared-icon name="play" [size]="20" />
+          </button>
+        } @else {
+          <a class="sidebar-nav__item"
+             [routerLink]="item.path"
+             routerLinkActive="active"
+             [attr.aria-label]="t('user.' + item.key)">
+            <shared-icon [name]="item.icon" [size]="20" class="sidebar-nav__icon" />
+            <span class="sidebar-nav__label">{{ t('user.' + item.key) }}</span>
+          </a>
+        }
+      }
+    }
+    <shared-preferences-bar class="mt-auto p-1" />
+  </nav>
+
+  <div class="sidebar-nav__divider"></div>
+
+  <footer class="sidebar-footer">
+    <a class="sidebar-nav__item"
+       (click)="authSvc.logout()"
+       [attr.aria-label]="t('logout')">
+      <shared-icon name="logout" [size]="20" class="sidebar-nav__icon" />
+      <span class="sidebar-nav__label">{{ t('logout') }}</span>
+    </a>
+  </footer>
+
+</aside>

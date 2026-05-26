@@ -1,0 +1,41 @@
+@use './styles/index';
+@use './styles/mixins' as m;
+
+// ─── Reset ────────────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ─── Root ─────────────────────────────────────────────────────────────────────
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100dvh;
+}
+
+// ─── reCAPTCHA ────────────────────────────────────────────────────────────────
+// Badge is hidden; reCAPTCHA notice is shown in the auth forms per Google ToS
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+// ─── Reduced motion ───────────────────────────────────────────────────────────
+@include m.no-motion {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

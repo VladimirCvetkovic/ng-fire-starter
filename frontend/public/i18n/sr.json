@@ -1,0 +1,230 @@
+{
+  "auth": {
+    "login": {
+      "pageTitle": "Prijava",
+      "tagline": "Tagline",
+      "email": "Email",
+      "emailPlaceholder": "korisnik@email.com",
+      "password": "Lozinka",
+      "forgotPassword": "Zaboravili ste lozinku?",
+      "signIn": "Prijavi se",
+      "signingIn": "Prijavljivanje…",
+      "noAccount": "Nemate nalog?",
+      "signUp": "Registruj se","errors": {
+        "invalidCredential": "Pogrešan email ili lozinka",
+        "emailNotVerified": "Email nije verifikovan. Proverite inbox pre prijave.",
+        "tooManyRequests": "Previše pokušaja. Pokušajte ponovo kasnije",
+        "networkError": "Greška mreže. Proverite internet konekciju",
+        "recaptchaFailed": "Verifikacija nije uspela. Pokušajte ponovo",
+        "unknown": "Greška pri prijavi. Pokušajte ponovo"
+      }
+    },
+    "register": {
+      "pageTitle": "Kreiranje naloga",
+      "creating": "Kreiranje naloga…",
+      "step0": {
+        "title": "Kreiraj nalog",
+        "subtitle": "Ko si ti?",
+        "userTitle": "Korisnik",
+        "userDescription": "Opis korisnika",
+        "adminTitle": "Administrator",
+        "adminDescription": "Opis administratora",
+        "continue": "Nastavi →"
+      },
+      "step1": {
+        "userTitle": "Korisnički nalog",
+        "adminTitle": "Admin nalog",
+        "subtitle": "Popuni osnovne podatke",
+        "nameLabel": "Ime i prezime",
+        "namePlaceholder": "Stefan Nikolić",
+        "email": "Email",
+        "emailPlaceholder": "korisnik@email.com",
+        "password": "Lozinka",
+        "passwordPlaceholder": "Min. 6 znakova",
+        "confirmPasswordLabel": "Potvrdi lozinku",
+        "confirmPasswordPlaceholder": "Ponovi lozinku",
+        "continueBtn": "Nastavi →",
+        "createBtn": "Kreiraj nalog →",
+        "phoneLabel": "Broj telefona",
+        "phonePlaceholder": "+381 63 555 0000"
+      },
+      "step2": {
+        "title": "Naslov koraka 2",
+        "subtitle": "Još jedan korak",
+        "logoUrlLabel": "Logo (opciono)",
+        "logoUrlPlaceholder": "https://primer.com/logo.png",
+        "logoPreviewAlt": "Pregled loga",
+        "themeLabel": "Podrazumevana tema",
+        "paletteLabel": "Paleta boja",
+        "langLabel": "Jezik",
+        "brandingNote": "Sva podešavanja za <strong>Brending</strong> možete naknadno podesiti na Settings stranici.",
+        "createBtn": "Kreiraj admin nalog →"
+      },
+      "alreadyHaveAccount": "Već imaš nalog?",
+      "logIn": "Prijavi se",
+      "validation": {
+        "required": "Ovo polje je obavezno",
+        "invalidEmail": "Unesite ispravnu email adresu",
+        "minPassword": "Lozinka mora imati najmanje 6 znakova",
+        "passwordMismatch": "Lozinke se ne podudaraju",
+        "invalidPhone": "Unesite ispravan broj telefona (npr. +381 63 555 0000)",
+        "invalidUrl": "Unesite ispravan URL koji počinje sa http:// ili https://"
+      },
+      "errors": {
+        "emailAlreadyInUse": "Email je već registrovan",
+        "weakPassword": "Lozinka mora imati najmanje 6 znakova",
+        "tooManyRequests": "Previše pokušaja. Pokušajte ponovo kasnije",
+        "networkError": "Greška mreže. Proverite internet konekciju",
+        "recaptchaFailed": "Verifikacija nije uspela. Pokušajte ponovo",
+        "unknown": "Greška pri registraciji. Pokušajte ponovo"
+      }
+    },
+    "forgotPassword": {
+      "pageTitle": "Zaboravljena lozinka",
+      "title": "Resetuj lozinku",
+      "instruction": "Unesite vašu email adresu i poslaćemo vam link za resetovanje lozinke.",
+      "email": "Email",
+      "emailPlaceholder": "korisnik@email.com",
+      "send": "Pošalji link",
+      "sending": "Slanje…",
+      "sentSuccess": "Link je poslat!",
+      "sentDetail": "Proverite inbox na adresi {{email}}.",
+      "spamNote": "Ne vidite email? Obavezno proverite <strong>SPAM</strong> folder.",
+      "backToLogin": "Nazad na prijavu",
+      "validation": {
+        "required": "Email je obavezan",
+        "invalidEmail": "Unesite ispravnu email adresu"
+      },
+      "errors": {
+        "userNotFound": "Ne postoji nalog sa ovom email adresom",
+        "invalidEmail": "Unesite ispravnu email adresu",
+        "tooManyRequests": "Previše pokušaja. Pokušajte ponovo kasnije",
+        "networkError": "Greška mreže. Proverite internet konekciju",
+        "unknown": "Nešto nije u redu. Pokušajte ponovo"
+      }
+    },
+    "resetPassword": {
+      "pageTitle": "Resetovanje lozinke",
+      "title": "Nova lozinka",
+      "verifying": "Provera linka…",
+      "instruction": "Postavite novu lozinku za {{email}}.",
+      "passwordLabel": "Nova lozinka",
+      "passwordPlaceholder": "Min. 6 karaktera",
+      "confirmLabel": "Potvrdi lozinku",
+      "confirmPlaceholder": "Ponovi lozinku",
+      "submit": "Sačuvaj lozinku",
+      "submitting": "Čuvanje…",
+      "successTitle": "Lozinka je promenjena!",
+      "successDetail": "Možete se prijaviti sa novom lozinkom.",
+      "backToLogin": "Nazad na prijavu",
+      "invalidCode": {
+        "detail": "Link za resetovanje lozinke je istekao ili je već iskorišćen.",
+        "tryAgain": "Zatraži novi link"
+      },
+      "validation": {
+        "required": "Ovo polje je obavezno",
+        "minPassword": "Lozinka mora imati najmanje 6 karaktera",
+        "passwordMismatch": "Lozinke se ne podudaraju"
+      },
+      "errors": {
+        "expiredCode": "Link je istekao. Zatražite novi.",
+        "invalidCode": "Link nije validan. Zatražite novi.",
+        "weakPassword": "Lozinka mora imati najmanje 6 karaktera",
+        "tooManyRequests": "Previše pokušaja. Pokušajte ponovo kasnije",
+        "networkError": "Greška mreže. Proverite internet konekciju",
+        "unknown": "Nešto nije u redu. Pokušajte ponovo"
+      }
+    },
+    "emailVerified": {
+      "pageTitle": "Verifikacija emaila",
+      "verifying": "Provera…",
+      "successTitle": "Email verifikovan!",
+      "successDetail": "Vaša email adresa je potvrđena. Možete se prijaviti.",
+      "invalidTitle": "Link je istekao",
+      "invalidDetail": "Ovaj link nije validan ili je već iskorišćen. Zatražite novi.",
+      "backToLogin": "Nazad na prijavu"
+    },
+    "verifyEmail": {
+      "pageTitle": "Verifikacija emaila",
+      "title": "Proverite email",
+      "instruction": "Poslali smo link za verifikaciju na adresu:",
+      "resend": "Pošalji ponovo",
+      "sending": "Slanje…",
+      "resentSuccess": "Email je ponovo poslat! Proverite inbox.",
+      "spamNote": "Ne vidite email? Obavezno proverite <strong>SPAM</strong> folder.",
+      "backToLogin": "Nazad na prijavu",
+      "errors": {
+        "resendFailed": "Slanje nije uspelo. Pokušajte ponovo."
+      }
+    },
+    "header": {
+      "back": "Nazad"
+    },
+    "footer": {
+      "alreadyHaveAccount": "Već imaš nalog?",
+      "logIn": "Prijavi se",
+      "recaptchaNotice": "Zaštićeno Google <a class=\"link\" href=\"https://policies.google.com/privacy\" target=\"_blank\" rel=\"noopener\">reCAPTCHA</a> – <a class=\"link\" href=\"https://policies.google.com/terms\" target=\"_blank\" rel=\"noopener\">Uslovi korišćenja</a>"
+    }
+  },
+  "layout": {
+    "sidenav": {
+      "ariaLabel": "Bočna navigacija",
+      "toggleCollapse": "Sažmi/proširi bočnu traku",
+      "searchPlaceholder": "Pretraga...",
+      "logout": "Odjavi se",
+      "play": "Zabeleži trening",
+      "admin": {
+        "home": "Pregled",
+        "clients": "Klijenti",
+        "plans": "Planovi",
+        "meals": "Obroci",
+        "settings": "Podešavanja"
+      },
+      "user": {
+        "home": "Početna",
+        "meals": "Obroci",
+        "history": "Istorija",
+        "profile": "Profil"
+      },
+      "roleLabel": {
+        "user": "Korisnik",
+        "admin": "Administrator"
+      }
+    },
+    "drawer": {
+      "close": "Zatvori"
+    },
+    "bottomSheet": {
+      "close": "Zatvori"
+    }
+  },
+  "placeholder": {
+    "welcome": "Dobrodošli, {{name}}! ({{role}})",
+    "logout": "Odjavi se",
+    "openDrawer": "Otvori Drawer",
+    "openBottomSheet": "Otvori Bottom Sheet",
+    "openBanner": "Prikaži Banner",
+    "drawerTitle": "Primer Drawera",
+    "drawerSubtitle": "Sadržaj unutar drawera",
+    "drawerContent": "Ovo je sadržaj prikazan unutar drawer panela.",
+    "bottomSheetTitle": "Primer Bottom Sheeta",
+    "bottomSheetSubtitle": "Sadržaj unutar bottom sheeta",
+    "bottomSheetContent": "Ovo je sadržaj prikazan unutar bottom sheeta.",
+    "bannerMessage": "Ovo je primer obaveštenja u banneru.",
+    "bannerClose": "Zatvori"
+  },
+  "ui": {
+    "appName": "#{ProjectName}#",
+    "palette": {
+      "ariaLabel": "Promeni paletu boja",
+      "blue": "Plava",
+      "violet": "Ljubičasta",
+      "emerald": "Zelena",
+      "amber": "Žuta",
+      "red": "Crvena",
+      "pink": "Pink",
+      "cyan": "Cijan",
+      "orange": "Narandžasta"
+    }
+  }
+}

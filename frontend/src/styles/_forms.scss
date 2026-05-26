@@ -1,0 +1,50 @@
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  -webkit-appearance: none;
+
+  &::placeholder {
+    color: var(--color-text-faint);
+  }
+
+  &:focus {
+    border-color: var(--primary);
+    background: var(--color-bg);
+    box-shadow: 0 0 0 3px var(--primary-subtle);
+  }
+}
+
+.link {
+  display: inline;
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--primary);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "#{FirebaseProjectId}#"
+  },
+  "targets": {
+    "#{FirebaseProjectId}#": {
+      "hosting": {
+        "production": [
+          "#{FirebaseProjectId}#"
+        ]
+      }
+    }
+  }
+}
